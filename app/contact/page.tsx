@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 
-export default function Page() {
+export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -12,14 +12,16 @@ export default function Page() {
   });
 
   const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState({ type: "", text: "" });
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    setMessage({ type: "", text: "" });
 
     try {
       const res = await fetch("/api/sendmail", {
@@ -32,13 +34,14 @@ export default function Page() {
 
       const data = await res.json();
       if (data.success) {
-        alert("✅ Email sent successfully!");
+        setMessage({ type: "success", text: "✅ Email sent successfully!" });
         setFormData({ name: "", phone: "", to: "", subject: "", text: "" });
       } else {
-        alert("❌ Email not sent!");
+        setMessage({ type: "error", text: "❌ Email not sent!" });
       }
     } catch (error) {
-      console.error("Error sending email:", error.stack || error);
+      console.error("Error sending email:", error);
+      setMessage({ type: "error", text: "❌ An error occurred. Please try again!" });
     }
 
     setLoading(false);
@@ -46,7 +49,8 @@ export default function Page() {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100 p-6">
-      <div className="bg-white shadow-lg rounded-xl p-6 w-full max-w-4xl flex flex-col md:flex-row">
+      <div className="bg-white shadow-lg rounded-xl p-6 w-full max-w-4xl flex flex-col md:flex-row transition-transform duration-300 hover:scale-105">
+        
         {/* Left Section - Contact Info */}
         <div className="md:w-1/3 bg-blue-500 text-white p-6 rounded-xl md:rounded-l-xl">
           <h2 className="text-xl font-semibold mb-4">Contact Details</h2>
@@ -59,8 +63,18 @@ export default function Page() {
         {/* Right Section - Form */}
         <div className="md:w-2/3 p-6">
           <h2 className="text-2xl font-semibold text-gray-800 text-center mb-4">
-            Send an Email
+            Send an Email 📧
           </h2>
+
+          {message.text && (
+            <div
+              className={`text-center mb-4 p-3 rounded-lg ${
+                message.type === "success" ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"
+              }`}
+            >
+              {message.text}
+            </div>
+          )}
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <input

@@ -1,21 +1,35 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
-export async function POST(req) {
+export async function POST(req: Request) {
   try {
-    const { name, phone, to, subject, text } = await req.json();
+    // 🛑 Safe JSON parsing
+    let body;
+    try {
+      body = await req.json();
+    } catch (err) {
+      console.error('🚨 Invalid JSON:', err);
+      return NextResponse.json({ success: false, message: 'Invalid JSON' }, { status: 400 });
+    }
 
+    const { name, phone, to, subject, text } = body;
+
+    // 🛑 Required fields check
     if (!name || !phone || !to || !subject || !text) {
       console.error('🚨 Missing required fields:', { name, phone, to, subject, text });
-      return NextResponse.json(
-        { success: false, message: 'Missing required fields' },
-        { status: 400 }
-      );
+      return NextResponse.json({ success: false, message: 'Missing required fields' }, { status: 400 });
     }
 
     console.log('📩 Sending email to:', to);
 
-    let transporter = nodemailer.createTransport({
+    // 🛑 Environment variables check
+    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+      console.error('🚨 Missing EMAIL_USER or EMAIL_PASS in environment variables');
+      return NextResponse.json({ success: false, message: 'Email configuration error' }, { status: 500 });
+    }
+
+    // ✅ Use `const` for transporter
+    const transporter = nodemailer.createTransport({
       host: 'smtp.gmail.com',
       port: 587, // Use 587 for TLS
       secure: false, // false for TLS, true for SSL (465)
@@ -28,7 +42,8 @@ export async function POST(req) {
       },
     });
 
-    let info = await transporter.sendMail({
+    // ✅ Use `const` for `info`
+    const info = await transporter.sendMail({
       from: process.env.EMAIL_USER,
       to,
       subject,
@@ -40,7 +55,7 @@ export async function POST(req) {
   } catch (error) {
     console.error('❌ API Error:', error);
     return NextResponse.json(
-      { success: false, error: error.message || 'Internal Server Error' },
+      { success: false, error: error instanceof Error ? error.message : 'Internal Server Error' },
       { status: 500 }
     );
   }

@@ -1,6 +1,12 @@
 import React from "react";
+import Image from "next/image";
 
 export default function Page() {
+  const handleBooking = () => {
+    alert("Booking process started! 🚗");
+    // Yahan aap ek booking modal ya navigation logic add kar sakte hain
+  };
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-[#116a52] p-4">
       {/* Main Content Section */}
@@ -11,7 +17,8 @@ export default function Page() {
             Neeraj Kumar Yadav - Premium Car Travel Services
           </h1>
           <p className="text-gray-700 text-justify leading-relaxed">
-            Hello! My name is <strong>Neeraj Kumar Yadav</strong>, and I am a B.Tech student at <strong>Galgotias University</strong>.  
+            Hello! My name is <strong>Neeraj Kumar Yadav</strong>, and I am a B.Tech student at{" "}
+            <strong>Galgotias University</strong>.  
             I have started a premium car travel service for both long and short tours, ensuring a smooth and luxurious experience.
           </p>
           <p className="text-gray-700 text-justify mt-4 leading-relaxed">
@@ -26,7 +33,10 @@ export default function Page() {
 
           {/* Call to Action */}
           <div className="mt-6">
-            <button   className="bg-green-700 text-white px-6 py-2 rounded-lg shadow-md hover:bg-green-800 transition">
+            <button 
+              onClick={handleBooking} 
+              className="bg-green-700 text-white px-6 py-2 rounded-lg shadow-md hover:bg-green-800 transition"
+            >
               Book Your Ride Now 🚗
             </button>
           </div>
@@ -34,15 +44,15 @@ export default function Page() {
 
         {/* Image Section */}
         <div className="md:w-1/3 flex items-center justify-center mt-6 md:mt-0">
-          <img
-            src="Neeraj.jpg"
-            alt="Neeraj Kumar Yadav"
-            className="rounded-lg shadow-md max-h-60"
+          <Image
+            src="/Neeraj.jpg" 
+            alt="Neeraj Kumar Yadav - Travel Service Owner"
+            className="rounded-lg shadow-md"
+            width={200}
+            height={200}
           />
         </div>
       </div>
-
-     
 
       {/* Customer Testimonials */}
       <div className="mt-8 bg-white shadow-lg rounded-lg p-6 max-w-3xl">
