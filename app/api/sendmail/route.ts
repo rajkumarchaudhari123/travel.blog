@@ -1,17 +1,10 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
-export async function POST(req: Request) {
+export async function POST(req: NextRequest) {
   try {
     // 🛑 Safe JSON parsing
-    let body;
-    try {
-      body = await req.json();
-    } catch (err) {
-      console.error('🚨 Invalid JSON:', err);
-      return NextResponse.json({ success: false, message: 'Invalid JSON' }, { status: 400 });
-    }
-
+    const body = await req.json();
     const { name, phone, to, subject, text } = body;
 
     // 🛑 Required fields check
@@ -22,27 +15,22 @@ export async function POST(req: Request) {
 
     console.log('📩 Sending email to:', to);
 
-    // 🛑 Environment variables check
+    // 🛑 Check environment variables
     if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
       console.error('🚨 Missing EMAIL_USER or EMAIL_PASS in environment variables');
       return NextResponse.json({ success: false, message: 'Email configuration error' }, { status: 500 });
     }
 
-    // ✅ Use `const` for transporter
+    // ✅ Create transporter
     const transporter = nodemailer.createTransport({
-      host: 'smtp.gmail.com',
-      port: 587, // Use 587 for TLS
-      secure: false, // false for TLS, true for SSL (465)
+      service: 'gmail',
       auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS,
       },
-      tls: {
-        rejectUnauthorized: false,
-      },
     });
 
-    // ✅ Use `const` for `info`
+    // ✅ Send email
     const info = await transporter.sendMail({
       from: process.env.EMAIL_USER,
       to,
