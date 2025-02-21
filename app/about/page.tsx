@@ -11,7 +11,8 @@ export default function AboutPage() {
         <p className="text-gray-700 text-justify leading-relaxed">
           Hello! My name is <strong>Neeraj Kumar Yadav</strong>, and I am a B.Tech student at{" "}
           <strong>Galgotias University</strong>.  
-          I have started a premium car travel service for both long and short tours, ensuring a smooth and luxurious experience.
+          I have started a premium car travel service for both long and 
+           short tours, ensuring a smooth and luxurious experience.
         </p>
 
         <p className="text-gray-700 text-justify mt-4 leading-relaxed">

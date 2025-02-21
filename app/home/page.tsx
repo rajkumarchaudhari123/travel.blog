@@ -2,8 +2,6 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 const images = [
   { src: "/bg_1.jpg", alt: "First Slide", text: "Best Service in Town" },
@@ -15,7 +13,6 @@ export default function Home() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    AOS.init({ duration: 1000 });
 
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) =>
