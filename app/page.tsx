@@ -71,7 +71,7 @@ export default function Page() {
             { img: "/luxury.jpg", title: "Luxury", desc: "Premium cars for a luxurious experience." },
           ].map((car, index) => (
             <div key={index} className="bg-white p-6 rounded-lg shadow-lg">
-              <Image src={car.img} alt={car.title} width={400} height={250} className="w-full h-48 object-cover rounded" />
+              <Image src={car.img} alt={car.title} width={200} height={100} className="w-full h-44 object-cover rounded" />
               <h3 className="mt-4 text-2xl font-semibold">{car.title}</h3>
               <p className="mt-2 text-gray-600">{car.desc}</p>
             </div>

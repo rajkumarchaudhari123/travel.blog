@@ -26,9 +26,7 @@ export default function ContactPage() {
     try {
       const res = await fetch("/api/sendmail", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
 
@@ -37,13 +35,11 @@ export default function ContactPage() {
         setMessage({ type: "success", text: "✅ Email sent successfully!" });
         setFormData({ name: "", phone: "", to: "", subject: "", text: "" });
       } else {
-        setMessage({ type: "error", text: "❌ Email not sent!" });
+        setMessage({ type: "error", text: `❌ Error: ${data.error || "Email not sent!"}` });
       }
     } catch (error) {
-      console.error("Error sending email:", error);
       setMessage({ type: "error", text: "❌ An error occurred. Please try again!" });
     }
-
     setLoading(false);
   };
 
