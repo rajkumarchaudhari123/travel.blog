@@ -48,7 +48,7 @@ export default function Page() {
         <h2 className="text-4xl font-bold mb-6">Our Services</h2>
         <div className="grid md:grid-cols-3 gap-6">
           {[
-            { img: "/airport-transfer.jpg", title: "Airport Transfers", desc: "Timely pickups and drop-offs for stress-free travel." },
+            { img: "/Airport Transfer.jpg", title: "Airport Transfers", desc: "Timely pickups and drop-offs for stress-free travel." },
             { img: "/city-taxi.jpg", title: "City Rides", desc: "Fast and affordable travel within the city." },
             { img: "/outstation-taxi.jpg", title: "Outstation Trips", desc: "Comfortable rides for long-distance travel." },
           ].map((service, index) => (
