@@ -1,25 +1,21 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest } from 'next/server';
 import nodemailer from 'nodemailer';
 
 export async function POST(req: NextRequest) {
   try {
-    // ✅ JSON parse
-    const body = await req.json();
-    const { name, phone, subject, text } = body;
+    const { name, phone, pickup, dropoff } = await req.json();
 
-    // ✅ Required fields validation
-    if (!name || !phone || !subject || !text) {
-      return NextResponse.json({ success: false, message: '❌ Missing required fields' }, { status: 400 });
+    if (!name || !phone || !pickup || !dropoff) {
+      return Response.json({ success: false, message: '❌ All fields are required!' }, { status: 400 });
     }
 
-    console.log('📩 Sending email...');
+    console.log('🚖 New Booking Received:', { name, phone, pickup, dropoff });
 
-    // ✅ Check environment variables
     if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS || !process.env.RECEIVER_EMAIL) {
-      return NextResponse.json({ success: false, message: '❌ Email configuration error' }, { status: 500 });
+      return Response.json({ success: false, message: '❌ Email configuration error' }, { status: 500 });
     }
 
-    // ✅ Create transporter
+    // ✅ Send Email
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
@@ -28,18 +24,21 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    // ✅ Send email (Recipient is now fixed)
     const info = await transporter.sendMail({
       from: process.env.EMAIL_USER,
-      to: process.env.RECEIVER_EMAIL, // FIXED EMAIL ADDRESS (Tumhari Email)
-      subject,
-      text: `👤 Name: ${name}\n📞 Phone: ${phone}\n\n✉️ Message:\n${text}`,
+      to: process.env.RECEIVER_EMAIL, // Tumhari email
+      subject: "🚖 New Taxi Booking Request",
+      text: `📌 Booking Details:
+      👤 Name: ${name}
+      📞 Phone: ${phone}
+      📍 Pickup: ${pickup}
+      🎯 Dropoff: ${dropoff}`,
     });
 
-    console.log('✅ Email Sent:', info.messageId);
-    return NextResponse.json({ success: true, messageId: info.messageId });
-  } catch (error) {
+    console.log('✅ Booking Email Sent:', info.messageId);
+    return Response.json({ success: true, message: 'Booking Confirmed!' });
+  } catch (error: any) {
     console.error('❌ API Error:', error);
-    return NextResponse.json({ success: false, error: error.message || 'Internal Server Error' }, { status: 500 });
+    return Response.json({ success: false, error: error.message || 'Internal Server Error' }, { status: 500 });
   }
 }
