@@ -1,43 +1,23 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest } from "next/server";
 import nodemailer from "nodemailer";
 
 export async function POST(req: NextRequest) {
   try {
-    const textData = await req.text(); // 🔍 Debug request body
-    console.log("📩 RAW Request Data:", textData);
+    const { name, phone, subject, text } = await req.json();
 
-    let requestData;
-    try {
-      requestData = JSON.parse(textData);
-    } catch (jsonError) {
-      console.error("❌ JSON Parsing Error:", jsonError);
-      return NextResponse.json(
-        { success: false, message: "❌ Invalid JSON format!" },
-        { status: 400 }
-      );
+    // ❌ Yaha koi "to" field ki zaroorat nahi hai
+    if (!name || !phone || !subject || !text) {
+      return Response.json({ success: false, message: "❌ All fields are required!" }, { status: 400 });
     }
 
-    console.log("📩 Parsed Data:", requestData);
-    const { name, phone, to, subject, text } = requestData;
+    console.log("🚀 New Email Request:", { name, phone, subject, text });
 
-    if (!name || !phone || !to || !subject || !text) {
-      console.error("❌ Missing Fields:", { name, phone, to, subject, text });
-      return NextResponse.json(
-        { success: false, message: "❌ All fields are required!" },
-        { status: 400 }
-      );
+    // ✅ Check Environment Variables
+    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS || !process.env.RECEIVER_EMAIL) {
+      return Response.json({ success: false, message: "❌ Email configuration error" }, { status: 500 });
     }
 
-    // ✅ Email Config Check
-    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-      console.error("❌ Missing Email Config in .env");
-      return NextResponse.json(
-        { success: false, message: "❌ Email configuration error" },
-        { status: 500 }
-      );
-    }
-
-    // ✅ Send Email
+    // ✅ Setup Mail Transporter
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -46,20 +26,18 @@ export async function POST(req: NextRequest) {
       },
     });
 
+    // ✅ Send Email to Tumhara Email (Fixing "To" Field)
     const info = await transporter.sendMail({
-      from: process.env.EMAIL_USER,
-      to: to,
-      subject: subject,
-      text: `📩 Message from ${name} (${phone}):\n\n${text}`,
+      from: `"${name}" <${process.env.EMAIL_USER}>`, // ✅ Sender Ka Naam Show Hoga
+      to: process.env.RECEIVER_EMAIL, // ✅ FIXED EMAIL - SENDER KO NHI JAYEGA
+      subject: `📩 New Message from ${name}`,
+      text: `👤 Name: ${name}\n📞 Phone: ${phone}\n\n✉️ Message:\n${text}`,
     });
 
-    console.log("✅ Email Sent:", info.messageId);
-    return NextResponse.json({ success: true, message: "✅ Email sent successfully!" });
+    console.log("✅ Email Sent Successfully:", info.messageId);
+    return Response.json({ success: true, message: "Email sent successfully!" });
   } catch (error: any) {
     console.error("❌ API Error:", error);
-    return NextResponse.json(
-      { success: false, error: error.message || "Internal Server Error" },
-      { status: 500 }
-    );
+    return Response.json({ success: false, error: error.message || "Internal Server Error" }, { status: 500 });
   }
 }
