@@ -33,7 +33,12 @@ export default function ContactPage() {
 
       if (res.ok && data.success) {
         setMessage({ type: "success", text: "✅ Email sent successfully!" });
-        setFormData({ name: "", phone: "", subject: "", text: "" }); // ✅ Reset only if success
+        setFormData({ name: "", phone: "", subject: "", text: "" });
+
+        // ✅ WhatsApp पर मैसेज भेजने का Redirect
+        const whatsappMessage = `Hello, my name is ${formData.name}. I want to discuss: ${formData.subject}. Message: ${formData.text}`;
+        const whatsappURL = `https://wa.me/9717204925?text=${encodeURIComponent(whatsappMessage)}`;
+        window.open(whatsappURL, "_blank");
       } else {
         setMessage({ type: "error", text: `❌ ${data.message || "Failed to send email!"}` });
       }
@@ -52,9 +57,19 @@ export default function ContactPage() {
         <div className="md:w-1/3 bg-blue-500 text-white p-6 rounded-xl md:rounded-l-xl">
           <h2 className="text-xl font-semibold mb-4">Contact Details</h2>
           <p className="mb-2"><strong>Name:</strong> Neeraj Kumar Yadav</p>
-          <p className="mb-2"><strong>Phone:</strong> 9717204925</p>
+          <p className="mb-2"><strong>Phone:</strong> <a href="tel:9717204925" className="underline">9717204925</a></p>
           <p className="mb-2"><strong>Address:</strong> Pocket 12, Sector 82</p>
           <p className="mb-2"><strong>City:</strong> Noida, UP</p>
+
+          {/* ✅ Direct Call Button */}
+          <a href="tel:9717204925" className="block mt-4 bg-green-500 text-white text-center py-2 rounded-lg hover:bg-green-600 transition">
+            📞 Call Now
+          </a>
+
+          {/* ✅ WhatsApp Button */}
+          <a href="https://wa.me/9717204925" target="_blank" className="block mt-2 bg-green-500 text-white text-center py-2 rounded-lg hover:bg-green-600 transition">
+            💬 Chat on WhatsApp
+          </a>
         </div>
 
         {/* Right Section - Form */}
@@ -109,12 +124,13 @@ export default function ContactPage() {
               required
               className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-400 h-32"
             />
+
             <button
               type="submit"
               disabled={loading}
               className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition disabled:bg-gray-400"
             >
-              {loading ? "Sending..." : "Send Email"}
+              {loading ? "Sending..." : "Send Email & WhatsApp"}
             </button>
           </form>
         </div>

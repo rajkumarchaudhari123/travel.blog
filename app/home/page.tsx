@@ -13,7 +13,6 @@ export default function Home() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) =>
         prevIndex === images.length - 1 ? 0 : prevIndex + 1
@@ -51,6 +50,23 @@ export default function Home() {
               />
               <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center drop-shadow-lg">
                 {image.text}
+              </div>
+              {/* WhatsApp and Call Buttons */}
+              <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex space-x-4">
+                <a 
+                  href="https://wa.me/yourwhatsappphonenumber?text=Hello! I want to book a ride." 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="px-6 py-3 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-600 transition"
+                >
+                  WhatsApp Us
+                </a>
+                <a 
+                  href="tel:+yourphonenumber" 
+                  className="px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 transition"
+                >
+                  Call Now
+                </a>
               </div>
             </div>
           ))}
