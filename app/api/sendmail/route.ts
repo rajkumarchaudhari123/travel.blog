@@ -15,7 +15,7 @@ export async function POST(req: NextRequest) {
 
     console.log("🚀 New Email Request:", { name, phone, subject, text });
 
-    // ✅ Environment Variables Check
+    // ✅ Check Environment Variables
     if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS || !process.env.RECEIVER_EMAIL) {
       return NextResponse.json(
         { success: false, message: "❌ Email configuration error. Check your environment variables!" },
@@ -23,15 +23,13 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // ✅ Setup Mail Transporter with Debugging
+    // ✅ Setup Mail Transporter
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS,
       },
-      debug: true,  // ✅ SMTP Debugging ON
-      logger: true, // ✅ Logs SMTP Output
     });
 
     // ✅ Send Email
