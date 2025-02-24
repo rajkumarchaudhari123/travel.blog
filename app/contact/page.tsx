@@ -6,13 +6,12 @@ export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
-    to: "",
     subject: "",
     text: "",
   });
 
   const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState({ type: "", text: "" });
+  const [message, setMessage] = useState<{ type: string; text: string } | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -21,7 +20,7 @@ export default function ContactPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    setMessage({ type: "", text: "" });
+    setMessage(null);
 
     try {
       const res = await fetch("/api/sendmail", {
@@ -31,15 +30,17 @@ export default function ContactPage() {
       });
 
       const data = await res.json();
-      if (data.success) {
+
+      if (res.ok && data.success) {
         setMessage({ type: "success", text: "✅ Email sent successfully!" });
-        setFormData({ name: "", phone: "", to: "", subject: "", text: "" });
+        setFormData({ name: "", phone: "", subject: "", text: "" }); // ✅ Reset only if success
       } else {
-        setMessage({ type: "error", text: `❌ Error: ${data.error || "Email not sent!"}` });
+        setMessage({ type: "error", text: `❌ ${data.message || "Failed to send email!"}` });
       }
     } catch (error) {
-      setMessage({ type: "error", text: "❌ An error occurred. Please try again!" });
+      setMessage({ type: "error", text: "❌ An unexpected error occurred!" });
     }
+
     setLoading(false);
   };
 
@@ -62,7 +63,7 @@ export default function ContactPage() {
             Send an Email 📧
           </h2>
 
-          {message.text && (
+          {message && (
             <div
               className={`text-center mb-4 p-3 rounded-lg ${
                 message.type === "success" ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"
@@ -88,15 +89,6 @@ export default function ContactPage() {
               value={formData.phone}
               onChange={handleChange}
               placeholder="Your Phone Number"
-              required
-              className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-400"
-            />
-            <input
-              type="email"
-              name="to"
-              value={formData.to}
-              onChange={handleChange}
-              placeholder="Recipient Email"
               required
               className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-400"
             />

@@ -1,26 +1,20 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest } from "next/server";
 import nodemailer from "nodemailer";
 
 export async function POST(req: NextRequest) {
   try {
     const { name, phone, subject, text } = await req.json();
 
-    // ✅ Sab fields check karo
+    // ❌ Yaha koi "to" field ki zaroorat nahi hai
     if (!name || !phone || !subject || !text) {
-      return NextResponse.json(
-        { success: false, message: "❌ All fields are required!" },
-        { status: 400 }
-      );
+      return Response.json({ success: false, message: "❌ All fields are required!" }, { status: 400 });
     }
 
     console.log("🚀 New Email Request:", { name, phone, subject, text });
 
     // ✅ Check Environment Variables
     if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS || !process.env.RECEIVER_EMAIL) {
-      return NextResponse.json(
-        { success: false, message: "❌ Email configuration error. Check your environment variables!" },
-        { status: 500 }
-      );
+      return Response.json({ success: false, message: "❌ Email configuration error" }, { status: 500 });
     }
 
     // ✅ Setup Mail Transporter
@@ -32,22 +26,18 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    // ✅ Send Email
+    // ✅ Send Email to Tumhara Email (Fixing "To" Field)
     const info = await transporter.sendMail({
-      from: `"${name}" <${process.env.EMAIL_USER}>`, // ✅ Sender Name
-      to: process.env.RECEIVER_EMAIL, // ✅ Fixed Email (Tumhare Email pe Jayega)
+      from: `"${name}" <${process.env.EMAIL_USER}>`, // ✅ Sender Ka Naam Show Hoga
+      to: process.env.RECEIVER_EMAIL, // ✅ FIXED EMAIL - SENDER KO NHI JAYEGA
       subject: `📩 New Message from ${name}`,
       text: `👤 Name: ${name}\n📞 Phone: ${phone}\n\n✉️ Message:\n${text}`,
     });
 
     console.log("✅ Email Sent Successfully:", info.messageId);
-    return NextResponse.json({ success: true, message: "✅ Email sent successfully!" });
-
+    return Response.json({ success: true, message: "Email sent successfully!" });
   } catch (error: any) {
-    console.error("❌ Email API Error:", error);
-    return NextResponse.json(
-      { success: false, error: error.message || "❌ Internal Server Error" },
-      { status: 500 }
-    );
+    console.error("❌ API Error:", error);
+    return Response.json({ success: false, error: error.message || "Internal Server Error" }, { status: 500 });
   }
 }
