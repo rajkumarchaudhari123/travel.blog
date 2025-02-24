@@ -1,42 +1,36 @@
-import { NextRequest } from "next/server";
-import nodemailer from "nodemailer";
+import { NextRequest, NextResponse } from "next/server";
+import { Resend } from "resend";
 
 export async function POST(req: NextRequest) {
   try {
     const { name, phone, subject, text } = await req.json();
 
     if (!name || !phone || !subject || !text) {
-      return new Response(JSON.stringify({ success: false, message: "❌ All fields are required!" }), { status: 400 });
+      return NextResponse.json({ success: false, message: "❌ All fields are required!" }, { status: 400 });
     }
 
     console.log("🚀 New Email Request:", { name, phone, subject, text });
 
-    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS || !process.env.RECEIVER_EMAIL) {
-      return new Response(JSON.stringify({ success: false, message: "❌ Email configuration error!" }), { status: 500 });
+    // ✅ Check Environment Variables
+    if (!process.env.RESEND_API_KEY || !process.env.RECEIVER_EMAIL) {
+      return NextResponse.json({ success: false, message: "❌ Email configuration error" }, { status: 500 });
     }
 
-    // ✅ Setup Mail Transporter
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-    });
+    // ✅ Setup Resend Client
+    const resend = new Resend(process.env.RESEND_API_KEY);
 
-    // ✅ Send Email
-    const info = await transporter.sendMail({
-      from: `"${name}" <${process.env.EMAIL_USER}>`,
-      to: process.env.RECEIVER_EMAIL,
+    // ✅ Send Email using Resend
+    const emailResponse = await resend.emails.send({
+      from: "Rajkumar <noreply@yourdomain.com>", // ✅ Use your verified domain
+      to: process.env.RECEIVER_EMAIL, // ✅ Fixed Receiver
       subject: `📩 New Message from ${name}`,
       text: `👤 Name: ${name}\n📞 Phone: ${phone}\n\n✉️ Message:\n${text}`,
     });
 
-    console.log("✅ Email Sent Successfully:", info.messageId);
-    return new Response(JSON.stringify({ success: true, message: "✅ Email sent successfully!" }), { status: 200 });
-
+    console.log("✅ Email Sent Successfully:", emailResponse);
+    return NextResponse.json({ success: true, message: "✅ Email sent successfully!" });
   } catch (error: any) {
     console.error("❌ API Error:", error);
-    return new Response(JSON.stringify({ success: false, message: error.message || "Internal Server Error" }), { status: 500 });
+    return NextResponse.json({ success: false, error: error.message || "Internal Server Error" }, { status: 500 });
   }
 }
