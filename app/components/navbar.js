@@ -9,7 +9,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="bg-blue-600 p-4 shadow-lg">
+    <nav className="bg-[#fcffa4] p-4 shadow-lg">
       <div className="container mx-auto flex justify-between items-center">
         
         {/* Logo & Brand Name */}
@@ -19,15 +19,15 @@ export default function Navbar() {
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex space-x-6">
-          <li><Link href="/home" className="text-white hover:text-gray-300">Home</Link></li>
-          <li><Link href="/about" className="text-white hover:text-gray-300">About Us</Link></li>
-          <li><Link href="/services" className="text-white hover:text-gray-300">Services</Link></li>
-          <li><Link href="/contact" className="text-white hover:text-gray-300">Contact</Link></li>
+          <li><Link href="/home" className="text-[#333333] hover:text-[#b8860b]">Home</Link></li>
+          <li><Link href="/about" className="text-[#333333] hover:text-[#b8860b]">About Us</Link></li>
+          <li><Link href="/services" className="text-[#333333] hover:text-[#b8860b]">Services</Link></li>
+          <li><Link href="/contact" className="text-[#333333] hover:text-[#b8860b]">Contact</Link></li>
         </ul>
 
         {/* Mobile Menu Button */}
         <button 
-          className="md:hidden text-white focus:outline-none" 
+          className="md:hidden text-[#333333] focus:outline-none" 
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <X size={28} /> : <Menu size={28} />}
@@ -36,11 +36,11 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <ul className="md:hidden bg-blue-700 text-white space-y-4 p-4 text-center">
-          <li><Link href="/home" className="block hover:text-gray-300">Home</Link></li>
-          <li><Link href="/about" className="block hover:text-gray-300">About Us</Link></li>
-          <li><Link href="/services" className="block hover:text-gray-300">Services</Link></li>
-          <li><Link href="/contact" className="block hover:text-gray-300">Contact</Link></li>
+        <ul className="md:hidden bg-[#222222] text-[#fff8dc] space-y-4 p-4 text-center">
+          <li><Link href="/home" className="block hover:text-[#b8860b]">Home</Link></li>
+          <li><Link href="/about" className="block hover:text-[#b8860b]">About Us</Link></li>
+          <li><Link href="/services" className="block hover:text-[#b8860b]">Services</Link></li>
+          <li><Link href="/contact" className="block hover:text-[#b8860b]">Contact</Link></li>
         </ul>
       )}
     </nav>
