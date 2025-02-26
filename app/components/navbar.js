@@ -14,8 +14,7 @@ export default function Navbar() {
         
         {/* Logo & Brand Name */}
         <div className="flex items-center space-x-3">
-          <Image src="/Travelya.png" alt="Travelya Logo" width={40} height={40} />
-          <span className="text-white text-2xl font-bold">Car Travels</span>
+          <Image src="/travel1.jpg" alt="Travelya Logo" width={40} height={40} />
         </div>
 
         {/* Desktop Menu */}

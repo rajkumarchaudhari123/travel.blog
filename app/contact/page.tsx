@@ -57,7 +57,7 @@ export default function ContactPage() {
         <div className="md:w-1/3 bg-blue-500 text-white p-6 rounded-xl md:rounded-l-xl">
           <h2 className="text-xl font-semibold mb-4">Contact Details</h2>
           <p className="mb-2"><strong>Name:</strong> Neeraj Kumar Yadav</p>
-          <p className="mb-2"><strong>Phone:</strong> <a href="tel:9717204925" className="underline">9717204925</a></p>
+          <p className="mb-2"><strong>Phone:</strong> <a href="tel:9717204925" className="underline">9717204325</a></p>
           <p className="mb-2"><strong>Address:</strong> Pocket 12, Sector 82</p>
           <p className="mb-2"><strong>City:</strong> Noida, UP</p>
 
