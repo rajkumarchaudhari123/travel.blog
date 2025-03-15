@@ -37,7 +37,7 @@ export default function ContactPage() {
 
         // ✅ WhatsApp पर मैसेज भेजने का Redirect
         const whatsappMessage = `Hello, my name is ${formData.name}. I want to discuss: ${formData.subject}. Message: ${formData.text}`;
-        const whatsappURL = `https://wa.me/9717204325?text=${encodeURIComponent(whatsappMessage)}`;
+        const whatsappURL = `https://wa.me/918368273091?text=${encodeURIComponent(whatsappMessage)}`;
         window.open(whatsappURL, "_blank");
       } else {
         setMessage({ type: "error", text: `❌ ${data.message || "Failed to send email!"}` });
@@ -57,17 +57,17 @@ export default function ContactPage() {
         <div className="md:w-1/3 bg-[#fcffa4] text-gray-900 p-6 rounded-xl md:rounded-l-xl">
           <h2 className="text-xl font-semibold mb-4">📞 Contact Details</h2>
           <p className="mb-2"><strong>Name:</strong> Neeraj Kumar Yadav</p>
-          <p className="mb-2"><strong>Phone:</strong> <a href="tel:9717204325" className="underline">9717204325</a></p>
+          <p className="mb-2"><strong>Phone:</strong> <a href="tel:+918368273091" className="underline">+91 83682 73091</a></p>
           <p className="mb-2"><strong>Address:</strong> Pocket 12, Sector 82</p>
           <p className="mb-2"><strong>City:</strong> Noida, UP</p>
 
           {/* ✅ Direct Call Button */}
-          <a href="tel:9717204325" className="block mt-4 bg-gray-900 text-white text-center py-2 rounded-lg hover:bg-gray-800 transition">
+          <a href="tel:+918368273091" className="block mt-4 bg-gray-900 text-white text-center py-2 rounded-lg hover:bg-gray-800 transition">
             📞 Call Now
           </a>
 
           {/* ✅ WhatsApp Button */}
-          <a href="https://wa.me/9717204325" target="_blank" className="block mt-2 bg-green-600 text-white text-center py-2 rounded-lg hover:bg-green-700 transition">
+          <a href="https://wa.me/918368273091" target="_blank" className="block mt-2 bg-green-600 text-white text-center py-2 rounded-lg hover:bg-green-700 transition">
             💬 Chat on WhatsApp
           </a>
         </div>
