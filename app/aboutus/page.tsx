@@ -1,63 +1,34 @@
-import Image from "next/image";
+import Image from "next/image"; // No need to import React manually
 
 export default function AboutPage() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-green-100 via-white to-green-100 p-6">
-      <div className="bg-white shadow-2xl rounded-3xl p-8 max-w-3xl w-full border border-green-200 transition-all duration-500 hover:shadow-green-300">
-        {/* Heading */}
-        <h1 className="text-4xl font-bold text-center text-green-800 mb-6 tracking-wide">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-6">
+      {/* Main Content Section */}
+      <div className="bg-white shadow-lg rounded-lg p-6 max-w-3xl">
+        <h1 className="text-2xl font-serif text-center mb-4 text-green-700">
           About Neeraj Kumar Yadav
         </h1>
-
-        {/* Paragraphs */}
-        <p className="text-gray-700 text-lg leading-relaxed mb-4">
-          Hello! My name is{" "}
-          <span className="font-semibold text-green-700">Neeraj Kumar Yadav</span>, and I am currently pursuing B.Tech at{" "}
-          <span className="font-semibold text-green-700">Galgotias University</span>.
-          I have started a <span className="text-green-700 font-medium">premium car travel service</span> for both long and short tours, ensuring a smooth and luxurious experience.
+        <p className="text-gray-700 text-justify leading-relaxed">
+          Hello! My name is <strong>Neeraj Kumar Yadav</strong>, and I am a B.Tech student at{" "}
+          <strong>Galgotias University</strong>.  
+          I have started a premium car travel service for both long and 
+           short tours, ensuring a smooth and luxurious experience.
         </p>
 
-        <p className="text-gray-700 text-lg leading-relaxed">
-          We proudly offer the <span className="text-green-700 font-medium">best travel services</span> in your city. Your comfort and safety are our top priorities. Let’s make your journey extraordinary!
+        <p className="text-gray-700 text-justify mt-4 leading-relaxed">
+          We provide the best travel services in your city. Your comfort and safety are our top priorities!
         </p>
 
         {/* Image Section */}
-        <div className="flex justify-center mt-8">
-          <div className="overflow-hidden rounded-full shadow-xl hover:scale-105 transition-transform duration-500">
-            <Image
-              src="/Neeraj.jpg"
-              alt="Neeraj Kumar Yadav"
-              width={200}
-              height={200}
-              className="object-cover"
-              priority
-            />
-          </div>
-        </div>
-
-        {/* Extra Info Section */}
-        <div className="mt-10 border-t pt-6 text-gray-700">
-          <h2 className="text-2xl font-semibold text-center text-green-700 mb-4">
-            Why Choose Us?
-          </h2>
-          <ul className="list-disc list-inside space-y-2 text-lg">
-            <li>
-              ✅ <span className="font-medium">Clean & Well-Maintained Cars</span> – Our fleet is modern, sanitized, and regularly serviced.
-            </li>
-            <li>
-              ✅ <span className="font-medium">Trained Drivers</span> – Courteous, punctual, and experienced drivers at your service.
-            </li>
-            <li>
-              ✅ <span className="font-medium">Affordable Pricing</span> – Luxury that fits your budget without compromise.
-            </li>
-            <li>
-              ✅ <span className="font-medium">24/7 Support</span> – Anytime, anywhere – we're here for you.
-            </li>
-          </ul>
-
-          <p className="mt-6 text-center text-green-800 font-semibold text-xl">
-            "Travelling with us is not just a ride — it's an experience."
-          </p>
+        <div className="flex justify-center mt-6">
+          <Image 
+            src="/Neeraj.jpg" 
+            alt="Neeraj Kumar Yadav"
+            className="rounded-lg shadow-md"
+            width={200}
+            height={200}
+            priority
+          />
         </div>
       </div>
     </div>
