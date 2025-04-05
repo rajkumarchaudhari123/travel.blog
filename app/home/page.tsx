@@ -37,7 +37,7 @@ export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <main className="relative w-full h-screen overflow-hidden">
+      <main className="relative w-full h-screen overflow-hidden font-sans">
         <div
           className="absolute inset-0 flex transition-transform duration-700 ease-in-out"
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
@@ -55,7 +55,7 @@ export default function Home() {
                 className="object-cover w-full h-full"
                 priority
               />
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-gray-900 text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center drop-shadow-lg">
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-center drop-shadow-[0_2px_4px_rgba(0,0,0,0.4)]">
                 {image.text}
               </div>
               {/* WhatsApp and Call Buttons */}
@@ -64,13 +64,13 @@ export default function Home() {
                   href="https://wa.me/919717204325?text=Hello%20I%20want%20to%20book%20a%20ride."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-6 py-3 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-600 transition"
+                  className="px-6 py-3 bg-green-600 text-white font-semibold rounded-full hover:bg-green-700 transition"
                 >
                   WhatsApp Us
                 </a>
                 <a
                   href="tel:+919717204325"
-                  className="px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 transition"
+                  className="px-6 py-3 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition"
                 >
                   Call Now
                 </a>
@@ -82,13 +82,13 @@ export default function Home() {
         {/* Navigation Buttons */}
         <button
           onClick={prevSlide}
-          className="absolute left-5 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 p-3 rounded-full text-white hover:bg-opacity-70 transition"
+          className="absolute left-5 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-60 p-3 rounded-full text-black hover:bg-opacity-90 transition"
         >
           ❮
         </button>
         <button
           onClick={nextSlide}
-          className="absolute right-5 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 p-3 rounded-full text-white hover:bg-opacity-70 transition"
+          className="absolute right-5 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-60 p-3 rounded-full text-black hover:bg-opacity-90 transition"
         >
           ❯
         </button>
@@ -99,8 +99,8 @@ export default function Home() {
             <button
               key={index}
               onClick={() => setCurrentIndex(index)}
-              className={`w-3 h-3 rounded-full ${
-                currentIndex === index ? "bg-gray-900" : "bg-gray-500"
+              className={`w-3 h-3 rounded-full border-2 border-white ${
+                currentIndex === index ? "bg-white" : "bg-transparent"
               } transition`}
             />
           ))}
@@ -108,9 +108,9 @@ export default function Home() {
       </main>
 
       {/* Services Section */}
-      <div className="flex flex-col items-center bg-gray-100 p-6 sm:p-10">
-        <h1 className="text-3xl sm:text-4xl font-bold text-center mb-8 text-gray-800">
-          Our Latest Services
+      <div className="flex flex-col items-center bg-gradient-to-br from-yellow-50 to-blue-50 p-6 sm:p-10">
+        <h1 className="text-3xl sm:text-4xl font-bold text-center mb-8 text-gray-900">
+          ✨ Our Latest Services
         </h1>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -139,13 +139,13 @@ export default function Home() {
           ].map((service, index) => (
             <div
               key={index}
-              className="flex flex-col items-center bg-white p-4 sm:p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+              className="flex flex-col items-center bg-white p-6 rounded-2xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
             >
-              <span className="text-4xl sm:text-5xl mb-3">{service.icon}</span>
-              <h2 className="text-xl sm:text-2xl font-semibold mb-2 text-center">
+              <span className="text-5xl mb-4">{service.icon}</span>
+              <h2 className="text-xl font-bold mb-2 text-center text-blue-700">
                 {service.title}
               </h2>
-              <p className="text-gray-600 text-sm sm:text-base text-center">
+              <p className="text-gray-600 text-center">
                 {service.description}
               </p>
             </div>

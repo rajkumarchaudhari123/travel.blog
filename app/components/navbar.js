@@ -9,25 +9,38 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="bg-[#fcffa4] p-4 shadow-lg">
+    <nav className="bg-gradient-to-r from-yellow-100 via-yellow-200 to-yellow-300 p-4 shadow-xl border-b border-yellow-400">
       <div className="container mx-auto flex justify-between items-center">
-        
+
         {/* Logo & Brand Name */}
         <div className="flex items-center space-x-3">
-          <Image src="/travel1.jpg" alt="Travelya Logo" width={40} height={40} />
+          <Image
+            src="/travel1.jpg"
+            alt="Travelya Logo"
+            width={44}
+            height={44}
+            className="rounded-full shadow-md"
+          />
+          <span className="text-xl font-bold text-yellow-800 tracking-wide">Travelya</span>
         </div>
 
         {/* Desktop Menu */}
-        <ul className="hidden md:flex space-x-6">
-          <li><Link href="/home" className="text-[#333333] hover:text-[#b8860b]">Home</Link></li>
-          <li><Link href="/about" className="text-[#333333] hover:text-[#b8860b]">About Us</Link></li>
-          <li><Link href="/services" className="text-[#333333] hover:text-[#b8860b]">Services</Link></li>
-          <li><Link href="/contact" className="text-[#333333] hover:text-[#b8860b]">Contact</Link></li>
+        <ul className="hidden md:flex space-x-8">
+          {["Home", "About Us", "Services", "Contact"].map((item, index) => (
+            <li key={index}>
+              <Link
+                href={`/${item.toLowerCase().replace(" ", "")}`}
+                className="text-yellow-900 hover:text-yellow-600 transition duration-300 font-medium text-lg hover:underline underline-offset-4"
+              >
+                {item}
+              </Link>
+            </li>
+          ))}
         </ul>
 
         {/* Mobile Menu Button */}
-        <button 
-          className="md:hidden text-[#333333] focus:outline-none" 
+        <button
+          className="md:hidden text-yellow-900 focus:outline-none"
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <X size={28} /> : <Menu size={28} />}
@@ -36,11 +49,17 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <ul className="md:hidden bg-[#222222] text-[#fff8dc] space-y-4 p-4 text-center">
-          <li><Link href="/home" className="block hover:text-[#b8860b]">Home</Link></li>
-          <li><Link href="/about" className="block hover:text-[#b8860b]">About Us</Link></li>
-          <li><Link href="/services" className="block hover:text-[#b8860b]">Services</Link></li>
-          <li><Link href="/contact" className="block hover:text-[#b8860b]">Contact</Link></li>
+        <ul className="md:hidden bg-yellow-100 border-t border-yellow-300 shadow-inner mt-2 text-center space-y-4 py-4 rounded-b-xl">
+          {["Home", "About Us", "Services", "Contact"].map((item, index) => (
+            <li key={index}>
+              <Link
+                href={`/${item.toLowerCase().replace(" ", "")}`}
+                className="block text-yellow-900 hover:text-yellow-600 text-lg font-semibold transition-all duration-300"
+              >
+                {item}
+              </Link>
+            </li>
+          ))}
         </ul>
       )}
     </nav>
