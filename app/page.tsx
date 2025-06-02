@@ -26,7 +26,9 @@ export default function Page() {
 
     // WhatsApp Chat Redirect
     const whatsappMessage = `Hello, I want to book a ride.\n\nName: ${form.name}\nPhone: ${form.phone}\nPickup: ${form.pickup}\nDrop-off: ${form.dropoff}`;
-    const whatsappURL = `https://wa.me/9717204925?text=${encodeURIComponent(whatsappMessage)}`;
+    const whatsappURL = `https://wa.me/9717204925?text=${encodeURIComponent(
+      whatsappMessage
+    )}`;
     window.open(whatsappURL, "_blank");
   };
 
@@ -38,7 +40,9 @@ export default function Page() {
         style={{ backgroundImage: "url('/taxi-hero.jpg')" }}
       >
         <h1 className="text-5xl font-bold">Reliable Taxi Service</h1>
-        <p className="mt-4 text-lg">Fast, Safe & Affordable Travel in Your City</p>
+        <p className="mt-4 text-lg">
+          Fast, Safe & Affordable Travel in Your City
+        </p>
         <button
           onClick={() => router.push("/contact")}
           className="mt-6 px-6 py-3 bg-yellow-500 text-black font-semibold rounded-lg hover:bg-yellow-600 transition"
@@ -64,7 +68,14 @@ export default function Page() {
             name="phone"
             placeholder="Phone Number"
             value={form.phone}
-            onChange={handleChange}
+            onChange={(e) => {
+              const value = e.target.value;
+              if (/^\d{0,10}$/.test(value)) {
+                setForm({ ...form, phone: value });
+              }
+            }}
+            maxLength={10}
+            pattern="\d{10}"
             className="p-3 border rounded-lg w-full"
           />
           <input
