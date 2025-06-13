@@ -16,13 +16,16 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Travelya - Best Tour & Travel Services",
-  description: "Explore the world with Travelya! We provide premium tour packages, cab services, and customized travel experiences. Book your next trip with us today!",
-  keywords: "tour and travel, cab booking, holiday packages, travel agency, road trips, best tour services",
+  description:
+    "Explore the world with Travelya! We provide premium tour packages, cab services, and customized travel experiences. Book your next trip with us today!",
+  keywords:
+    "tour and travel, cab booking, holiday packages, travel agency, road trips, best tour services",
   authors: [{ name: "Travelya Team", url: "https://www.travelya.site" }], // ✅ Fix applied here
   robots: "index, follow",
   openGraph: {
     title: "Travelya - Your Travel Partner",
-    description: "Plan your next vacation with Travelya. Enjoy hassle-free travel with our expert services and affordable packages.",
+    description:
+      "Plan your next vacation with Travelya. Enjoy hassle-free travel with our expert services and affordable packages.",
     url: "https://www.travelya.site",
     type: "website",
     images: [
@@ -38,11 +41,11 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@Travelya",
     title: "Travelya - Explore the World",
-    description: "Discover amazing travel packages and cab booking services with Travelya.",
+    description:
+      "Discover amazing travel packages and cab booking services with Travelya.",
     images: ["https://www.travelya.site/twitter-image.jpg"], // सही URL डालो
   },
 };
-
 
 export default function RootLayout({
   children,
@@ -56,10 +59,10 @@ export default function RootLayout({
       >
         <Navbar />
 
-         <div className=" min-h-screen h-full w-full ">
-        {children}
+        <div className=" min-h-screen py-7 h-full w-full bg-[#000514]  bg-[size:20px_20px]">
+          {children}
         </div>
-        <Footer/>
+        <Footer />
       </body>
     </html>
   );

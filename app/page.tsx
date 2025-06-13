@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
-import { useRouter } from "next/navigation";
-import Image from "next/image";
+import React, { Component, useState } from "react";
+import Whychooseus from "../app/components/Whychooseus";
+import Typeservices from "../app/components/Typeservices";
 
+import { useRouter } from "next/navigation";
 export default function Page() {
   const router = useRouter();
   const [form, setForm] = useState({
@@ -33,11 +34,11 @@ export default function Page() {
   };
 
   return (
-    <div className="bg-gray-100">
+    <div className="">
       {/* Hero Section */}
       <div
         className="relative h-screen bg-cover bg-center flex flex-col justify-center items-center text-white text-center p-6"
-        style={{ backgroundImage: "url('/taxi-hero.jpg')" }}
+        style={{ backgroundImage: "url('/taxi1.jpg')" }}
       >
         <h1 className="text-5xl font-bold">Reliable Taxi Service</h1>
         <p className="mt-4 text-lg">
@@ -45,15 +46,19 @@ export default function Page() {
         </p>
         <button
           onClick={() => router.push("/contact")}
-          className="mt-6 px-6 py-3 bg-yellow-500 text-black font-semibold rounded-lg hover:bg-yellow-600 transition"
+          className="mt-6 px-6 py-3 bg-yellow-500 text-white font-semibold rounded-lg hover:bg-yellow-600 transition"
         >
           Book a Ride
         </button>
       </div>
+      <Whychooseus />
+      <Typeservices />
 
       {/* Booking Section */}
-      <div className="py-16 px-4 sm:px-6 lg:px-8 text-center bg-white">
-        <h2 className="text-4xl font-bold mb-6">Book Your Ride</h2>
+      <div className="py-16 px-4 sm:px-6 lg:px-8 text-center ">
+        <h2 className="text-4xl font-bold text-blue-600 mb-6">
+          Book Your Ride
+        </h2>
         <form className="max-w-lg mx-auto grid gap-4">
           <input
             type="text"
