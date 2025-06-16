@@ -40,7 +40,7 @@ export default function Page() {
         className="relative h-screen bg-cover bg-center flex flex-col justify-center items-center text-white text-center p-6"
         style={{
           backgroundImage:
-            "url('https://tse3.mm.bing.net/th?id=OIP.wvyDSoWSlt_b6JV6LCSiOgHaE6&pid=Api&P=0&h=180')",
+            "url('https://images.unsplash.com/photo-1628947733273-cdae71c9bfd3?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
         }}
       >
         <h1 className="text-5xl font-bold">Reliable Taxi Service</h1>

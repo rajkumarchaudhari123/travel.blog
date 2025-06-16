@@ -7,17 +7,20 @@ export default function Typeservices() {
     {
       title: "Family Travel",
       desc: "Explore kid-friendly destinations with comfort and fun.",
-      image: "/family-travel.jpg",
+      image:
+        "https://images.unsplash.com/photo-1506836467174-27f1042aa48c?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
     {
       title: "Adventure Trips",
       desc: "Thrilling outdoor adventures in breathtaking locations.",
-      image: "/adventure-travel.jpg",
+      image:
+        "https://images.unsplash.com/photo-1715312889999-1898f3f8fbbc?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
     {
       title: "Luxury Tours",
       desc: "Premium travel experiences with first-class amenities.",
-      image: "/luxury-travel.jpg",
+      image:
+        "https://images.unsplash.com/photo-1584869603969-428540799c2f?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
   ];
 

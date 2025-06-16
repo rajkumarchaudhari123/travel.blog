@@ -17,21 +17,24 @@ export default function Whychooseus() {
       description:
         "We craft personalized, comfortable, and safe rides tailored to your needs. Our drivers are professional and punctual, ensuring a hassle-free journey every time.",
       icon: <FaStar className="text-yellow-400 text-3xl" />,
-      image: "/ride-quality.jpg",
+      image:
+        "https://images.unsplash.com/photo-1579689217062-f66443381e24?q=80&w=920&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
     {
       title: "Value For Money",
       description:
         "We offer competitive and transparent pricing with no hidden charges. High-quality service at an affordable rate — making every ride worth it.",
       icon: <FaMoneyBillWave className="text-green-400 text-3xl" />,
-      image: "/money.jpg",
+      image:
+        "https://images.unsplash.com/photo-1598665070070-82eaf00ad214?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
     {
       title: "24/7 Customer Support",
       description:
         "Our support team is always available to assist you with your queries and ride needs — day or night, we're here for you.",
       icon: <FaHeadset className="text-blue-400 text-3xl" />,
-      image: "/support.jpg",
+      image:
+        "https://images.unsplash.com/photo-1520923642038-b4259acecbd7?q=80&w=1119&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
   ];
 
