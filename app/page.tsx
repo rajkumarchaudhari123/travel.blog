@@ -38,7 +38,10 @@ export default function Page() {
       {/* Hero Section */}
       <div
         className="relative h-screen bg-cover bg-center flex flex-col justify-center items-center text-white text-center p-6"
-        style={{ backgroundImage: "url('../taxi.jpg')" }}
+        style={{
+          backgroundImage:
+            "url('https://tse3.mm.bing.net/th?id=OIP.wvyDSoWSlt_b6JV6LCSiOgHaE6&pid=Api&P=0&h=180')",
+        }}
       >
         <h1 className="text-5xl font-bold">Reliable Taxi Service</h1>
         <p className="mt-4 text-lg">
