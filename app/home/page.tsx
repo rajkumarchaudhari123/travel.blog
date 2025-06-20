@@ -4,9 +4,21 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 
 const images = [
-  { src: "/bg_1.jpg", alt: "First Slide", text: "Best Service in Town" },
-  { src: "/bg_2.jpg", alt: "Second Slide", text: "Your Happiness, Our Goal" },
-  { src: "/bg_3.jpg", alt: "Third Slide", text: "We Are Here For You" },
+  {
+    src: "https://images.unsplash.com/photo-1520975922131-23c31ef1fdc5?auto=format&fit=crop&w=1920&q=80",
+    alt: "First Slide",
+    text: "Best Service in Town",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=1121&auto=format&fit=crop",
+    alt: "Second Slide",
+    text: "Your Happiness, Our Goal",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1504215680853-026ed2a45def?auto=format&fit=crop&w=1920&q=80",
+    alt: "Third Slide",
+    text: "We Are Here For You",
+  },
 ];
 
 export default function Home() {
@@ -18,7 +30,6 @@ export default function Home() {
         prevIndex === images.length - 1 ? 0 : prevIndex + 1
       );
     }, 5000);
-
     return () => clearInterval(interval);
   }, []);
 
@@ -51,23 +62,25 @@ export default function Home() {
                 className="object-cover w-full h-full"
                 priority
               />
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white/10 backdrop-blur-md px-6 py-4 rounded-xl shadow-md text-white text-3xl sm:text-5xl font-bold text-center">
-                {image.text}
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 px-6 py-4 bg-black/30 backdrop-blur-md rounded-xl shadow-lg text-white text-center transition-all duration-500 animate-fade-in">
+                <h1 className="text-3xl sm:text-5xl font-bold drop-shadow-md">
+                  {image.text}
+                </h1>
               </div>
 
-              {/* Action Buttons */}
+              {/* CTA Buttons */}
               <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col sm:flex-row gap-4">
                 <a
                   href="https://wa.me/919717204325?text=Hello%20I%20want%20to%20book%20a%20ride."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-6 py-3 bg-green-600 hover:bg-green-700 transition text-white font-semibold rounded-full shadow-lg"
+                  className="px-6 py-3 bg-green-600 hover:bg-green-700 transition text-white font-semibold rounded-full shadow-md"
                 >
                   💬 WhatsApp Us
                 </a>
                 <a
                   href="tel:+919717204325"
-                  className="px-6 py-3 bg-blue-600 hover:bg-blue-700 transition text-white font-semibold rounded-full shadow-lg"
+                  className="px-6 py-3 bg-blue-600 hover:bg-blue-700 transition text-white font-semibold rounded-full shadow-md"
                 >
                   📞 Call Now
                 </a>
@@ -76,7 +89,7 @@ export default function Home() {
           ))}
         </div>
 
-        {/* Navigation Arrows */}
+        {/* Arrows */}
         <button
           onClick={prevSlide}
           className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 p-3 rounded-full text-white transition"
@@ -96,31 +109,33 @@ export default function Home() {
             <button
               key={index}
               onClick={() => setCurrentIndex(index)}
-              className={`w-3 h-3 rounded-full transition ${
+              className={`w-3 h-3 rounded-full ${
                 currentIndex === index ? "bg-white" : "bg-gray-400"
-              }`}
+              } transition-all duration-300`}
             />
           ))}
         </div>
       </main>
-      <div className="text-center px-6 mt-8 py-10 max-w-4xl mx-auto">
-        <h1 className="text-3xl sm:text-4xl font-semibold text-amber-400 font-serif leading-relaxed">
+
+      {/* Intro Text */}
+      <div className="text-center px-6 mt-12 py-10 max-w-4xl mx-auto">
+        <h1 className="text-3xl sm:text-4xl font-semibold text-orange-500 font-serif leading-relaxed">
           Experience every journey the Travelya way — smooth, safe, and stylish.
           Whether it’s an airport pickup, a city tour, or a special event, we
           deliver comfort and elegance that makes your travel truly memorable.
         </h1>
         <h2 className="mt-4 text-xl italic font-[cursive] text-gray-700">
-          Neeraj
+          – Neeraj
         </h2>
       </div>
 
-      {/* Services Section */}
+      {/* Services */}
       <section className=" py-16 px-6 sm:px-12">
         <div className="max-w-7xl mx-auto text-center mb-12">
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-white">
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-800">
             🚗 Our Premium Services
           </h1>
-          <p className="text-white mt-3 text-lg">
+          <p className="text-gray-600 mt-3 text-lg">
             We provide luxury, reliability, and comfort — always on time.
           </p>
         </div>

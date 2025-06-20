@@ -16,7 +16,7 @@ export default function Navbar() {
         {/* Logo and Brand */}
         <div className="flex items-center gap-3">
           <Image
-            src="/travel1.jpg"
+            src="/travelya.png"
             alt="Travelya Logo"
             width={44}
             height={44}
