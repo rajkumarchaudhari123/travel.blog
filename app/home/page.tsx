@@ -5,7 +5,7 @@ import Image from "next/image";
 
 const images = [
   {
-    src: "https://images.unsplash.com/photo-1520975922131-23c31ef1fdc5?auto=format&fit=crop&w=1920&q=80",
+    src: "https://images.unsplash.com/photo-1749838065282-32db54bed154?q=80&w=1229&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     alt: "First Slide",
     text: "Best Service in Town",
   },
@@ -15,7 +15,7 @@ const images = [
     text: "Your Happiness, Our Goal",
   },
   {
-    src: "https://images.unsplash.com/photo-1504215680853-026ed2a45def?auto=format&fit=crop&w=1920&q=80",
+    src: "https://images.unsplash.com/photo-1599831069477-b2acdc0bcb91?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     alt: "Third Slide",
     text: "We Are Here For You",
   },
@@ -132,10 +132,10 @@ export default function Home() {
       {/* Services */}
       <section className=" py-16 px-6 sm:px-12">
         <div className="max-w-7xl mx-auto text-center mb-12">
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-800">
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-white">
             🚗 Our Premium Services
           </h1>
-          <p className="text-gray-600 mt-3 text-lg">
+          <p className="text-gray-300 mt-3 text-lg">
             We provide luxury, reliability, and comfort — always on time.
           </p>
         </div>

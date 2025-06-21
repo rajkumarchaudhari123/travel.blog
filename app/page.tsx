@@ -43,13 +43,15 @@ export default function Page() {
             "url('https://images.unsplash.com/photo-1628947733273-cdae71c9bfd3?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
         }}
       >
-        <h1 className="text-5xl font-bold">Reliable Taxi Service</h1>
-        <p className="mt-4 text-lg">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
+          Reliable Taxi Service
+        </h1>
+        <p className="mt-3 text-sm sm:text-base md:text-lg max-w-md">
           Fast, Safe & Affordable Travel in Your City
         </p>
         <button
           onClick={() => router.push("/contact")}
-          className="mt-6 px-6 py-3 bg-yellow-500 text-white font-semibold rounded-lg hover:bg-yellow-600 transition"
+          className="mt-5 px-5 py-2 sm:px-6 sm:py-3 bg-yellow-500 text-white font-semibold rounded-lg hover:bg-yellow-600 transition"
         >
           Book a Ride
         </button>
