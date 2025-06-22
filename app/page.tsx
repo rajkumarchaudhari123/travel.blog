@@ -1,10 +1,12 @@
 "use client";
 
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
+import { useRouter } from "next/navigation";
+
 import Whychooseus from "../app/components/Whychooseus";
 import Typeservices from "../app/components/Typeservices";
+import Travelyatree from "../app/components/Travelyatree";
 
-import { useRouter } from "next/navigation";
 export default function Page() {
   const router = useRouter();
   const [form, setForm] = useState({
@@ -25,7 +27,6 @@ export default function Page() {
     }
     alert(`✅ Booking confirmed for ${form.name}! 🚖`);
 
-    // WhatsApp Chat Redirect
     const whatsappMessage = `Hello, I want to book a ride.\n\nName: ${form.name}\nPhone: ${form.phone}\nPickup: ${form.pickup}\nDrop-off: ${form.dropoff}`;
     const whatsappURL = `https://wa.me/9717204925?text=${encodeURIComponent(
       whatsappMessage
@@ -34,13 +35,13 @@ export default function Page() {
   };
 
   return (
-    <div className="">
+    <div className="overflow-x-hidden">
       {/* Hero Section */}
       <div
-        className="relative h-screen bg-cover bg-center flex flex-col justify-center items-center text-white text-center p-6"
+        className="relative h-[80vh] md:h-screen bg-cover bg-center flex flex-col justify-center items-center text-white text-center p-6"
         style={{
           backgroundImage:
-            "url('https://images.unsplash.com/photo-1628947733273-cdae71c9bfd3?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
+            "url('https://images.unsplash.com/photo-1628947733273-cdae71c9bfd3?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0')",
         }}
       >
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
@@ -56,12 +57,15 @@ export default function Page() {
           Book a Ride
         </button>
       </div>
+
+      {/* Feature Sections */}
       <Whychooseus />
       <Typeservices />
+      <Travelyatree />
 
       {/* Booking Section */}
-      <div className="py-16 px-4 sm:px-6 lg:px-8 text-center ">
-        <h2 className="text-4xl font-bold text-blue-600 mb-6">
+      <div className="py-16 px-4 sm:px-6 lg:px-8 text-center">
+        <h2 className="text-3xl sm:text-4xl font-bold text-blue-600 mb-6">
           Book Your Ride
         </h2>
         <form className="max-w-lg mx-auto grid gap-4">
@@ -71,7 +75,7 @@ export default function Page() {
             placeholder="Your Name"
             value={form.name}
             onChange={handleChange}
-            className="p-3 border rounded-lg w-full"
+            className="p-3 border rounded-lg w-full text-base"
           />
           <input
             type="tel"
@@ -86,7 +90,7 @@ export default function Page() {
             }}
             maxLength={10}
             pattern="\d{10}"
-            className="p-3 border rounded-lg w-full"
+            className="p-3 border rounded-lg w-full text-base"
           />
           <input
             type="text"
@@ -94,7 +98,7 @@ export default function Page() {
             placeholder="Pickup Location"
             value={form.pickup}
             onChange={handleChange}
-            className="p-3 border rounded-lg w-full"
+            className="p-3 border rounded-lg w-full text-base"
           />
           <input
             type="text"
@@ -102,7 +106,7 @@ export default function Page() {
             placeholder="Drop-off Location"
             value={form.dropoff}
             onChange={handleChange}
-            className="p-3 border rounded-lg w-full"
+            className="p-3 border rounded-lg w-full text-base"
           />
 
           <button
@@ -119,13 +123,13 @@ export default function Page() {
           <a
             href="https://wa.me/9717204325"
             target="_blank"
-            className="px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition"
+            className="px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition text-center"
           >
             💬 Chat on WhatsApp
           </a>
           <a
             href="tel:9717204325"
-            className="px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition"
+            className="px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition text-center"
           >
             📞 Call Now
           </a>

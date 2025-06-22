@@ -25,7 +25,7 @@ export default function Typeservices() {
   ];
 
   return (
-    <main className="py-20 px-4 text-white bg-gray-900">
+    <main className="py-20 px-4 text-white ">
       <div className="text-center mb-12">
         <h3 className="text-xl text-yellow-500 font-semibold uppercase">
           Travel in style
