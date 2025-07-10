@@ -1,21 +1,9 @@
-import { ImageResponse } from "next/og";
-import React from "react";
-
-export const runtime = "edge";
-
-export const size = {
-  width: 32,
-  height: 32,
-};
-
-export const contentType = "image/png";
-
 export default function Icon() {
   return new ImageResponse(
     (
       <div
         style={{
-          fontSize: 24,
+          fontSize: 28,
           backgroundColor: "black",
           width: "100%",
           height: "100%",
@@ -23,14 +11,15 @@ export default function Icon() {
           justifyContent: "center",
           alignItems: "center",
           color: "white",
+          fontWeight: "bold",
         }}
       >
-        Travelya
+        ✈️ TLY
       </div>
     ),
     {
-      width: size.width,
-      height: size.height,
+      width: 128,
+      height: 128,
     }
   );
 }
