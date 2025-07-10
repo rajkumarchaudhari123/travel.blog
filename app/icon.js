@@ -1,5 +1,3 @@
-// icon.tsx or route.ts (inside /app/icon/route.ts)
-
 import { ImageResponse } from "next/og";
 import React from "react";
 
