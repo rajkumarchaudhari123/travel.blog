@@ -11,7 +11,7 @@ export default function AboutUs() {
         <div className="w-full md:w-1/2 group overflow-hidden rounded-3xl shadow-2xl">
           <div className="relative w-full h-[350px] sm:h-[420px] rounded-3xl shadow-2xl overflow-hidden">
             <Image
-              src="/neeraj.jpg"
+              src="/travelya1.png"
               alt="Founder Neeraj Yadav"
               fill
               className="object-cover transition-transform duration-500 group-hover:scale-105"
