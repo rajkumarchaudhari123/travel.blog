@@ -1,40 +1,75 @@
+"use client";
 import React from "react";
+import Image from "next/image";
 
 export default function AboutUs() {
   return (
-    <section className=" py-16 px-4 sm:px-8 lg:px-20">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10">
+    <section className="py-16 px-4 sm:px-8 lg:px-20 bg-gradient-to-b from-gray-900 to-gray-800">
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
+
         {/* Left Side Image */}
-        <div className="w-full md:w-1/2">
-          <img
-            src="https://images.unsplash.com/photo-1570129477492-45c003edd2be"
-            alt="About Travelya"
-            className="rounded-3xl shadow-xl w-full object-cover h-[350px] sm:h-[400px]"
-          />
+        <div className="w-full md:w-1/2 group overflow-hidden rounded-3xl shadow-2xl">
+          <div className="relative w-full h-[350px] sm:h-[420px] rounded-3xl shadow-2xl overflow-hidden">
+            <Image
+              src="/neeraj.jpg"
+              alt="About Us"
+              fill
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              priority
+            />
+          </div>
         </div>
 
         {/* Right Side Text */}
-        <div className="w-full md:w-1/2 text-gray-800">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-[#FF6600]">
+        <div className="w-full md:w-1/2 text-gray-200 animate-fadeIn">
+          <h2 className="text-4xl sm:text-5xl font-extrabold mb-6 text-[#FF6600] leading-tight">
             Discover Our Story
           </h2>
-          <p className="text-lg text-white leading-relaxed mb-4">
+
+          <p className="text-lg leading-relaxed mb-4 text-gray-300">
+            Hi, I’m <span className="font-semibold text-white">Neeraj Yadav</span>,
+            a <span className="text-white">B.Tech student</span> with an engineering background.
+            I founded <span className="font-semibold text-[#FF6600]">Travelya</span>
+            on <span className="text-white">1st March 2025</span> with a deep passion for travel
+            and a strong commitment to delivering exceptional service.
+          </p>
+
+          <p className="text-lg leading-relaxed mb-4 text-gray-300">
+            My vision is simple yet impactful: to provide the <span className="text-white">best travel experience</span>
+            possible for every customer, ensuring their journey is not only comfortable
+            but also truly <span className="font-medium text-white">memorable</span>.
+          </p>
+
+          <p className="text-lg leading-relaxed mb-4 text-gray-300">
             At <span className="font-semibold text-[#FF6600]">Travelya</span>,
-            we believe travel should be more than just getting from one place to
-            another. With a commitment to comfort, safety, and personalized
-            service, we've helped thousands of customers reach their destination
-            with peace of mind.
+            we believe travel is more than just reaching a destination.
+            Every trip should bring <span className="font-medium text-white">comfort, safety, and personalized care</span>
+            from start to finish.
           </p>
-          <p className="text-base text-white">
-            Whether it’s a family vacation, a wedding, or a quick city transfer,
-            we’ve got your ride covered with reliable drivers and top-notch
-            support. Join the Travelya experience today.
+
+          <p className="text-base text-gray-400 mb-6">
+            Whether it’s a <span className="text-white">family vacation</span>,
+            a <span className="text-white">wedding celebration</span>,
+            or just a quick <span className="text-white">city transfer</span>,
+            our professional drivers and dedicated support team make sure your ride is smooth and stress-free.
           </p>
-          <button className="mt-6 px-6 py-3 bg-[#FF6600] text-white rounded-lg hover:bg-orange-600 transition">
+
+          <button className="mt-4 px-8 py-3 bg-gradient-to-r from-[#FF6600] to-orange-500 text-white font-semibold rounded-lg hover:scale-105 shadow-lg transition duration-300">
             Learn More
           </button>
         </div>
       </div>
+
+      {/* Animations */}
+      <style jsx>{`
+        @keyframes fadeIn {
+          0% { opacity: 0; transform: translateY(20px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fadeIn {
+          animation: fadeIn 0.8s ease-in-out forwards;
+        }
+      `}</style>
     </section>
   );
 }
