@@ -12,7 +12,7 @@ export default function AboutUs() {
           <div className="relative w-full h-[350px] sm:h-[420px] rounded-3xl shadow-2xl overflow-hidden">
             <Image
               src="/neeraj.jpg"
-              alt="About Us"
+              alt="Founder Neeraj Yadav"
               fill
               className="object-cover transition-transform duration-500 group-hover:scale-105"
               priority
@@ -28,30 +28,30 @@ export default function AboutUs() {
 
           <p className="text-lg leading-relaxed mb-4 text-gray-300">
             Hi, I’m <span className="font-semibold text-white">Neeraj Yadav</span>,
-            a <span className="text-white">B.Tech student</span> with an engineering background.
-            I founded <span className="font-semibold text-[#FF6600]">Travelya</span>
-            on <span className="text-white">1st March 2025</span> with a deep passion for travel
-            and a strong commitment to delivering exceptional service.
+            a passionate <span className="text-white">B.Tech student</span> with an engineering background.
+            On <span className="text-white">1st March 2025</span>, I founded
+            <span className="font-semibold text-[#FF6600]"> Travelya</span> with the dream of
+            redefining how people experience travel.
           </p>
 
           <p className="text-lg leading-relaxed mb-4 text-gray-300">
-            My vision is simple yet impactful: to provide the <span className="text-white">best travel experience</span>
-            possible for every customer, ensuring their journey is not only comfortable
-            but also truly <span className="font-medium text-white">memorable</span>.
+            My vision is clear: to deliver the <span className="text-white">best possible journeys</span>,
+            where comfort, safety, and customer happiness are at the heart of everything we do.
           </p>
 
           <p className="text-lg leading-relaxed mb-4 text-gray-300">
             At <span className="font-semibold text-[#FF6600]">Travelya</span>,
-            we believe travel is more than just reaching a destination.
-            Every trip should bring <span className="font-medium text-white">comfort, safety, and personalized care</span>
-            from start to finish.
+            we believe travel isn’t just about reaching a place —
+            it’s about creating <span className="font-medium text-white">memorable experiences</span>
+            that stay with you forever.
           </p>
 
           <p className="text-base text-gray-400 mb-6">
-            Whether it’s a <span className="text-white">family vacation</span>,
+            Be it a <span className="text-white">family vacation</span>,
             a <span className="text-white">wedding celebration</span>,
-            or just a quick <span className="text-white">city transfer</span>,
-            our professional drivers and dedicated support team make sure your ride is smooth and stress-free.
+            or even a quick <span className="text-white">city transfer</span>,
+            our expert drivers and dedicated team ensure your journey is
+            smooth, stress-free, and enjoyable.
           </p>
 
           <button className="mt-4 px-8 py-3 bg-gradient-to-r from-[#FF6600] to-orange-500 text-white font-semibold rounded-lg hover:scale-105 shadow-lg transition duration-300">
