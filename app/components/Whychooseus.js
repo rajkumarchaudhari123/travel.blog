@@ -18,7 +18,7 @@ export default function Whychooseus() {
         "We craft personalized, comfortable, and safe rides tailored to your needs. Our drivers are professional and punctual, ensuring a hassle-free journey every time.",
       icon: <FaStar className="text-yellow-400 text-3xl" />,
       image:
-        "https://images.unsplash.com/photo-1579689217062-f66443381e24?q=80&w=920&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "https://res.cloudinary.com/dpfdj5xc0/image/upload/v1758869721/avatars/user_cmfz35f6r0001qnbcp8upeqqb.jpg",
     },
     {
       title: "Value For Money",
@@ -26,7 +26,7 @@ export default function Whychooseus() {
         "We offer competitive and transparent pricing with no hidden charges. High-quality service at an affordable rate — making every ride worth it.",
       icon: <FaMoneyBillWave className="text-green-400 text-3xl" />,
       image:
-        "https://images.unsplash.com/photo-1598665070070-82eaf00ad214?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "https://res.cloudinary.com/dpfdj5xc0/image/upload/v1758111761/Chat/ChatFiles/drd4myj7mux3f5tyjgg1.jpg",
     },
     {
       title: "24/7 Customer Support",
@@ -39,7 +39,7 @@ export default function Whychooseus() {
   ];
 
   return (
-    <main className="py-16 px-4 bg-gray-950 text-white">
+    <main className="py-16 px-4 text-white">
       {/* Section Heading */}
       <div className="text-center mb-12">
         <h3 className="text-yellow-400 text-xl font-semibold tracking-wide">
@@ -48,7 +48,7 @@ export default function Whychooseus() {
         <h2 className="text-4xl md:text-5xl font-bold mt-2">
           Why Book With Us
         </h2>
-        <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
+        <p className="text-gray-300 mt-4 max-w-2xl mx-auto">
           Experience unmatched comfort, reliability, and value with our premier
           taxi services tailored just for you.
         </p>
@@ -62,22 +62,28 @@ export default function Whychooseus() {
             className="grid grid-cols-1 md:grid-cols-2 items-center gap-10"
           >
             {/* Text on Left */}
-            <div data-aos="fade-right" className="space-y-4 order-2 md:order-1">
+            <div
+              data-aos="fade-right"
+              className="space-y-4 order-2 md:order-1 transition-all duration-500 transform hover:translate-x-2"
+            >
               <div className="flex items-center gap-3">
                 {feature.icon}
-                <h3 className="text-2xl font-semibold">{feature.title}</h3>
+                <h3 className="text-2xl md:text-3xl font-semibold">{feature.title}</h3>
               </div>
               <p className="text-gray-300 text-lg">{feature.description}</p>
             </div>
 
             {/* Image on Right */}
-            <div data-aos="fade-left" className="order-1 md:order-2">
+            <div
+              data-aos="fade-left"
+              className="order-1 md:order-2 transition-all duration-500 transform hover:scale-110"
+            >
               <Image
                 src={feature.image}
                 alt={feature.title}
                 width={500}
                 height={300}
-                className="rounded-2xl shadow-2xl h-auto max-h-[300px] object-cover"
+                className="rounded-2xl shadow-2xl h-auto max-h-[300px] object-cover transition-transform duration-300"
               />
             </div>
           </div>

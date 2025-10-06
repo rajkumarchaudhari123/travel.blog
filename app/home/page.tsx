@@ -10,12 +10,12 @@ const images = [
     text: "Best Service in Town",
   },
   {
-    src: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=1121&auto=format&fit=crop",
+    src: "https://res.cloudinary.com/dpfdj5xc0/image/upload/v1749013495/cld-sample-2.jpg",
     alt: "Second Slide",
     text: "Your Happiness, Our Goal",
   },
   {
-    src: "https://images.unsplash.com/photo-1599831069477-b2acdc0bcb91?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    src: "https://res.cloudinary.com/dpfdj5xc0/image/upload/v1757324807/Chat/ChatFiles/s67p5dr7uorqtfddgmdg.jpg",
     alt: "Third Slide",
     text: "We Are Here For You",
   },
@@ -48,22 +48,22 @@ export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <main className="relative w-full h-screen overflow-hidden">
+      <main className="relative w-full h-[60vh] md:h-screen overflow-hidden">
         <div
           className="absolute inset-0 flex transition-transform duration-700 ease-in-out"
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
           {images.map((image, index) => (
-            <div key={index} className="relative min-w-full h-screen">
+            <div key={index} className="relative min-w-full h-full">
               <Image
                 src={image.src}
                 alt={image.alt}
-                fill
+                layout="fill"
                 className="object-cover w-full h-full"
                 priority
               />
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 px-6 py-4 bg-black/30 backdrop-blur-md rounded-xl shadow-lg text-white text-center transition-all duration-500 animate-fade-in">
-                <h1 className="text-3xl sm:text-5xl font-bold drop-shadow-md">
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 px-6 py-4 bg-black/30 backdrop-blur-md rounded-xl shadow-lg text-white text-center transition-all duration-500">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold drop-shadow-md">
                   {image.text}
                 </h1>
               </div>
@@ -89,29 +89,14 @@ export default function Home() {
           ))}
         </div>
 
-        {/* Arrows */}
-        <button
-          onClick={prevSlide}
-          className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 p-3 rounded-full text-white transition"
-        >
-          ❮
-        </button>
-        <button
-          onClick={nextSlide}
-          className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 p-3 rounded-full text-white transition"
-        >
-          ❯
-        </button>
-
         {/* Dots */}
         <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 flex gap-2">
           {images.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentIndex(index)}
-              className={`w-3 h-3 rounded-full ${
-                currentIndex === index ? "bg-white" : "bg-gray-400"
-              } transition-all duration-300`}
+              className={`w-3 h-3 rounded-full ${currentIndex === index ? "bg-white" : "bg-gray-400"
+                } transition-all duration-300`}
             />
           ))}
         </div>
@@ -130,7 +115,7 @@ export default function Home() {
       </div>
 
       {/* Services */}
-      <section className=" py-16 px-6 sm:px-12">
+      <section className="py-16 px-6 sm:px-12 bg-gray-800">
         <div className="max-w-7xl mx-auto text-center mb-12">
           <h1 className="text-3xl sm:text-4xl font-extrabold text-white">
             🚗 Our Premium Services

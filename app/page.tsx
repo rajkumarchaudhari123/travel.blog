@@ -38,7 +38,7 @@ export default function Page() {
     <div className="overflow-x-hidden">
       {/* Hero Section */}
       <div
-        className="relative h-[80vh] md:h-screen bg-cover bg-center flex flex-col justify-center items-center text-white text-center p-6"
+        className="relative h-[60vh] md:h-screen bg-cover bg-center flex flex-col justify-center items-center text-white text-center p-6"
         style={{
           backgroundImage:
             "url('https://images.unsplash.com/photo-1628947733273-cdae71c9bfd3?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0')",
